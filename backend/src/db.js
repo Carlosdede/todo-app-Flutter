@@ -6,14 +6,17 @@ dotenv.config();
 const { Pool } = pg;
 
 export const pool = new Pool({
-  user: process.env.DB_USER,
   host: process.env.DB_HOST,
+  user: process.env.DB_USER,
   database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
+  password: process.env.DB_PASS,
   port: process.env.DB_PORT,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
-// Helper para queries
+// Função helper para consultas
 export function query(text, params) {
   return pool.query(text, params);
 }
