@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../storage/secure_storage.dart';
 
 class Api {
-  static const baseUrl = "http://10.0.2.2:3000/api"; 
+  static const baseUrl = "https://todo-app-flutter.onrender.com/api"; 
 
   static Future<Map<String, dynamic>> post(String endpoint, Map body) async {
     final url = Uri.parse("$baseUrl/$endpoint");
