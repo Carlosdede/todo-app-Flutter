@@ -1,7 +1,4 @@
 import pg from "pg";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const { Pool } = pg;
 
@@ -16,7 +13,6 @@ export const pool = new Pool({
   },
 });
 
-// Função helper para consultas
 export function query(text, params) {
   return pool.query(text, params);
 }
