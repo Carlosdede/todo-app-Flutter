@@ -1,10 +1,24 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'theme/app_theme.dart';
 import 'pages/login_page.dart';
 import 'pages/home_page.dart';
 import 'storage/secure_storage.dart';
 
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
 void main() {
+  
+  HttpOverrides.global = MyHttpOverrides();
+
   runApp(const TodoApp());
 }
 
